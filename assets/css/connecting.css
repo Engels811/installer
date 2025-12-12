@@ -1,0 +1,139 @@
+/* ============================================================
+   WONDERLIFE MEGA SYSTEM – CONNECTING HOLOGRAM (FINAL v1.0)
+   Enthält:
+   • Holografisches Overlay
+   • Scan-Ring
+   • Core-Pulse
+   • Smooth Fade-In/Out
+============================================================ */
+
+/* =============================
+   GLOBAL OVERLAY CONTAINER
+============================= */
+#wln-connect-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 0, 25, 0.72);
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 1;
+    transition: opacity 0.35s ease;
+
+    z-index: 999999;
+}
+
+/* Hidden state */
+#wln-connect-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* =============================
+   CENTER BLOCK
+============================= */
+.overlay-center {
+    text-align: center;
+    color: #f4d9ff;
+    animation: fadeInCenter 0.5s ease-out forwards;
+}
+
+@keyframes fadeInCenter {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================
+   ROTIERENDER HOLO-RING
+============================= */
+.overlay-ring {
+    width: 130px;
+    height: 130px;
+    border: 3px solid rgba(255, 45, 245, 0.15);
+    border-top-color: #ff2df5;
+    border-radius: 50%;
+
+    margin: 0 auto 22px;
+
+    animation: rotateRing 1.4s linear infinite;
+    box-shadow: 0 0 22px rgba(255, 45, 245, 0.25);
+}
+
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* =============================
+   CORE SYMBOL (◎)
+============================= */
+.overlay-core {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ff2df5;
+
+    text-shadow:
+        0 0 16px rgba(255,45,245,0.9),
+        0 0 32px rgba(255,45,245,0.6);
+
+    animation: pulseCore 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseCore {
+    0%   { opacity: 0.7; transform: scale(1); }
+    50%  { opacity: 1; transform: scale(1.12); }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* =============================
+   STATUS TEXT
+============================= */
+.overlay-center p {
+    margin-top: 18px;
+    font-size: 17px;
+    letter-spacing: 0.6px;
+
+    color: #ffbdfb;
+    text-shadow: 0 0 10px rgba(255,45,245,0.3);
+
+    animation: textGlow 2s ease infinite;
+}
+
+@keyframes textGlow {
+    0% { opacity: 0.85; }
+    50% { opacity: 1; text-shadow: 0 0 14px rgba(255,45,245,0.65); }
+    100% { opacity: 0.85; }
+}
+
+/* =============================
+   EXIT FADE (Wenn erfolgreich)
+============================= */
+body.boot-exit {
+    animation: pageFadeOut .9s forwards;
+}
+
+@keyframes pageFadeOut {
+    0%   { opacity: 1; filter: blur(0px); }
+    100% { opacity: 0; filter: blur(5px); }
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media (max-width: 600px) {
+    .overlay-ring {
+        width: 100px;
+        height: 100px;
+    }
+
+    .overlay-core {
+        font-size: 34px;
+    }
+
+    .overlay-center p {
+        font-size: 15px;
+    }
+}

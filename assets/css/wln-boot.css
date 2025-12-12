@@ -1,0 +1,428 @@
+/* ==========================================================
+   WLN BOOT SCREEN
+   Version: 2.0
+   macOS-Style Progressbar + Holografische Ringe
+   Dauer: 10 Sekunden
+========================================================== */
+
+/* ============================================================
+   BOOT BODY
+============================================================ */
+.boot-body {
+    background: #0A0A0F;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ============================================================
+   BOOT SCREEN CONTAINER
+============================================================ */
+#wln-boot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #0A0A0F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: fadeOut 1.5s ease 13.5s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+
+/* ============================================================
+   BOOT CONTAINER
+============================================================ */
+.boot-container {
+    text-align: center;
+    max-width: 500px;
+    padding: 20px;
+}
+
+
+/* ============================================================
+   LOGO
+============================================================ */
+.boot-logo {
+    margin-bottom: 40px;
+}
+
+.boot-logo img {
+    width: 140px;
+    height: 140px;
+    animation: 
+        pulse 2.5s infinite ease-in-out,
+        rotate 20s linear infinite;
+    filter: drop-shadow(0 0 25px rgba(255, 45, 245, 0.8));
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px rgba(255, 45, 245, 0.6));
+    }
+    50% { 
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 35px rgba(255, 45, 245, 0.9));
+    }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* ============================================================
+   TITLE (HEADER)
+============================================================ */
+.boot-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #ff2df5;
+    text-shadow: 
+        0 0 20px rgba(255, 45, 245, 0.8),
+        0 0 40px rgba(255, 45, 245, 0.5);
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: titleGlow 3s infinite ease-in-out;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 20px rgba(255, 45, 245, 0.8),
+            0 0 40px rgba(255, 45, 245, 0.5);
+    }
+    50% {
+        text-shadow: 
+            0 0 30px rgba(255, 45, 245, 1),
+            0 0 60px rgba(255, 45, 245, 0.7),
+            0 0 80px rgba(255, 45, 245, 0.4);
+    }
+}
+
+
+/* ============================================================
+   SUBTITLE
+============================================================ */
+.boot-subtitle {
+    color: #d8baff;
+    font-size: 16px;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    animation: subtitleFade 2s ease-in-out infinite;
+}
+
+@keyframes subtitleFade {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+
+/* ============================================================
+   HOLOGRAFISCHER RING
+============================================================ */
+.boot-ring {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 50px auto;
+}
+
+.ring-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+    border: 3px solid rgba(255, 45, 245, 0.4);
+    border-radius: 50%;
+    animation: ringPulse 2.5s infinite ease-in-out;
+}
+
+.ring-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: 180px;
+    margin: -90px 0 0 -90px;
+    border: 2px solid rgba(255, 45, 245, 0.6);
+    border-radius: 50%;
+    animation: ringRotate 4s linear infinite;
+    box-shadow: 
+        0 0 25px rgba(255, 45, 245, 0.5),
+        inset 0 0 25px rgba(255, 45, 245, 0.3);
+}
+
+/* Ring Core - Zweiter Ring */
+.ring-core::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    margin: -70px 0 0 -70px;
+    border: 2px solid rgba(122, 0, 255, 0.5);
+    border-radius: 50%;
+    animation: ringRotateReverse 6s linear infinite;
+}
+
+@keyframes ringPulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+        border-color: rgba(255, 45, 245, 0.4);
+    }
+    50% { 
+        transform: scale(1.15);
+        opacity: 0.6;
+        border-color: rgba(255, 45, 245, 0.7);
+    }
+}
+
+@keyframes ringRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes ringRotateReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+
+/* ============================================================
+   PROGRESSBAR - macOS Style
+============================================================ */
+.boot-progress {
+    width: 100%;
+    max-width: 350px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.6),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.boot-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+}
+
+.boot-progress-bar {
+    height: 100%;
+    background: 
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 100%
+        ) 0 0 / 350px 100%,
+        linear-gradient(
+            90deg,
+            #ff2df5 0%,
+            #a44cff 50%,
+            #7a00ff 100%
+        );
+    background-repeat: repeat-x, no-repeat;
+    border-radius: 12px;
+    box-shadow: 
+        0 0 20px rgba(255, 45, 245, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    animation: 
+        progressFill 13s ease-in-out forwards,
+        progressShine 2s infinite;
+    width: 0%;
+    position: relative;
+}
+
+/* Progress Bar Glanz-Streifen */
+.boot-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    border-radius: 12px 12px 0 0;
+}
+
+/* Progress füllt sich in 13 Sekunden */
+@keyframes progressFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* macOS Glanz-Effekt */
+@keyframes progressShine {
+    0% {
+        background-position: -350px 0, 0 0;
+    }
+    100% {
+        background-position: 350px 0, 0 0;
+    }
+}
+
+
+/* ============================================================
+   LOADING DOTS (Optional)
+============================================================ */
+.boot-loading-dots {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.boot-loading-dots span {
+    width: 8px;
+    height: 8px;
+    background: #ff2df5;
+    border-radius: 50%;
+    animation: dotBounce 1.4s infinite ease-in-out both;
+    box-shadow: 0 0 10px rgba(255, 45, 245, 0.8);
+}
+
+.boot-loading-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.boot-loading-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes dotBounce {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+
+/* ============================================================
+   SCANLINE EFFECT (Optional)
+============================================================ */
+.boot-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 45, 245, 0.8),
+        transparent
+    );
+    animation: scanMove 3s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes scanMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+    .boot-title {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+
+    .boot-subtitle {
+        font-size: 14px;
+    }
+
+    .boot-logo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .boot-ring {
+        width: 180px;
+        height: 180px;
+    }
+
+    .ring-glow {
+        width: 160px;
+        height: 160px;
+        margin: -80px 0 0 -80px;
+    }
+
+    .ring-core {
+        width: 140px;
+        height: 140px;
+        margin: -70px 0 0 -70px;
+    }
+
+    .boot-progress {
+        max-width: 280px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .boot-title {
+        font-size: 24px;
+    }
+
+    .boot-subtitle {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .boot-logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .boot-container {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,129 @@
+/* ==========================================================
+   WONDERLIFE SIDEBAR – STEP NAVIGATION v4.1 (FINAL)
+   CyberCore Engine – NeonUX Installer UI
+========================================================== */
+
+.installer-sidebar {
+    width: 260px;
+    background: #140024;
+    border-right: 2px solid rgba(164,76,255,0.35);
+    box-shadow: 6px 0 22px rgba(122,0,255,0.25);
+    padding: 30px 0;
+    position: relative;
+    overflow-y: auto;
+    z-index: 15;
+}
+
+/* LOGO */
+.logo-small img {
+    width: 130px;
+    margin: 0 auto 30px auto;
+    display: block;
+    opacity: 5.95;
+    filter: drop-shadow(0 0 14px rgba(255,45,245,0.6));
+}
+
+/* LIST WRAPPER */
+.step-list {
+    list-style: none;
+    padding: 0 16px;
+}
+
+/* STEP ITEM */
+.step-list li {
+    padding: 10px 14px;
+    margin: 8px 0;
+
+    background: #1b032e;
+    border: 1px solid rgba(164,76,255,0.25);
+    border-radius: var(--radius);
+    color: #d8baff;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    transition: 0.25s ease;
+    box-shadow: 0 0 8px rgba(122,0,255,0.20);
+}
+
+/* ICON */
+.step-icon {
+    font-size: 16px;
+    width: 18px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* CHECKMARK (DONE) */
+.check {
+    margin-left: auto;
+    font-weight: bold;
+    color: #00ff9a;
+    text-shadow: 0 0 8px #00ff9a;
+}
+
+/* HOVER */
+.step-list li:hover {
+    background: #260044;
+    transform: translateX(3px);
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(255,45,245,0.4);
+}
+
+/* ACTIVE STEP */
+.step-list li.active {
+    background: linear-gradient(90deg, #ff2df5, #7a00ff);
+    color: #ffffff;
+    border-color: var(--color-primary);
+
+    box-shadow:
+        0 0 25px rgba(255,45,245,0.55),
+        inset 0 0 16px rgba(255,255,255,0.15);
+
+    transform: translateX(0);
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+/* DONE STATE */
+.step-list li.done {
+    opacity: 0.65;
+}
+
+.step-list li.done:hover {
+    opacity: 1;
+}
+
+/* ==========================================================
+   RESPONSIVE VERSION
+========================================================== */
+
+@media (max-width: 1000px) {
+    .installer-sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 10px 12px;
+        overflow-x: auto;
+
+        border-right: none;
+        border-bottom: 2px solid rgba(164,76,255,0.35);
+    }
+
+    .logo-small {
+        display: none;
+    }
+
+    .step-list {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        padding: 0;
+    }
+
+    .step-list li {
+        min-width: 160px;
+    }
+}

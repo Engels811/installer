@@ -1,0 +1,187 @@
+/* ==========================================================
+   WONDERLIFE PANELS – NEON EDITION v3.0 (FINAL)
+   CyberCore Engine – NeonUX Framework
+========================================================== */
+
+/* ==========================================================
+   STANDARD PANEL
+========================================================== */
+.panel {
+    background: #160028;
+    padding: 28px 35px;
+    border-radius: var(--radius);
+
+    border: 1px solid rgba(164,76,255,0.35);
+
+    box-shadow:
+        0 0 22px rgba(122,0,255,0.35),
+        inset 0 0 12px rgba(255,45,245,0.20);
+
+    margin-bottom: 45px;
+
+    animation: panelFade 0.45s ease-out;
+    transition: 0.25s ease;
+}
+
+@keyframes panelFade {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel:hover {
+    border-color: var(--color-primary);
+    box-shadow:
+        0 0 26px rgba(255,45,245,0.6),
+        inset 0 0 16px rgba(255,45,245,0.3);
+}
+
+.panel h3 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    color: var(--color-primary);
+    text-shadow: 0 0 10px var(--color-primary);
+}
+
+
+/* ==========================================================
+   STATUS BOXES (Requirements / Extensions / Permissions)
+========================================================== */
+.status-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #22003a;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+
+    border: 1px solid rgba(164,76,255,0.25);
+
+    margin-bottom: 12px;
+    transition: 0.2s ease;
+}
+
+.status-box:hover {
+    background: #2d004e;
+    border-color: var(--color-highlight);
+}
+
+.status-text {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* SUCCESS */
+.status-ok {
+    padding: 6px 14px;
+    background: rgba(0,255,140,0.20);
+    border: 1px solid #00ff99;
+    border-radius: var(--radius);
+    color: #00ffcc;
+    font-weight: bold;
+    text-shadow: 0 0 6px #00ff99;
+}
+
+/* ERROR */
+.status-bad {
+    padding: 6px 14px;
+    background: rgba(255,0,80,0.20);
+    border: 1px solid #ff0055;
+    border-radius: var(--radius);
+    color: #ff6b8a;
+    font-weight: bold;
+    text-shadow: 0 0 6px #ff0044;
+}
+
+
+/* ==========================================================
+   INFO / WARNING / SUCCESS PANELS
+========================================================== */
+
+.panel-info {
+    padding: 18px 22px;
+    background: rgba(164,76,255,0.12);
+    border: 1px solid rgba(164,76,255,0.45);
+    border-radius: var(--radius);
+    margin-bottom: 18px;
+    color: #e9d4ff;
+    font-size: 15px;
+}
+
+.panel-warning {
+    padding: 18px 22px;
+    background: rgba(255,166,0,0.12);
+    border: 1px solid #ffae00;
+    border-radius: var(--radius);
+    margin-bottom: 18px;
+    color: #ffdb9a;
+    text-shadow: 0 0 6px #ffae00;
+}
+
+.panel-success {
+    padding: 18px 22px;
+    background: rgba(0,255,140,0.12);
+    border: 1px solid #00ff99;
+    border-radius: var(--radius);
+    margin-bottom: 18px;
+    color: #c8ffee;
+    text-shadow: 0 0 6px #00ff99;
+}
+
+
+/* ==========================================================
+   KEY-VALUE WRAPPERS (used in Summary Step)
+========================================================== */
+
+.kv-item {
+    background: #1e0033;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(164,76,255,0.25);
+
+    margin-bottom: 12px;
+
+    display: flex;
+    justify-content: space-between;
+
+    transition: 0.2s ease;
+}
+
+.kv-item:hover {
+    background: #29004b;
+    border-color: var(--color-primary);
+}
+
+/* Key */
+.kv-left {
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+/* Value */
+.kv-right {
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+
+/* ==========================================================
+   RESPONSIVE ADJUSTMENTS
+========================================================== */
+
+@media (max-width: 900px) {
+    .panel {
+        padding: 22px 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .panel {
+        padding: 18px 20px;
+        margin-bottom: 30px;
+    }
+
+    .panel h3 {
+        font-size: 22px;
+    }
+}

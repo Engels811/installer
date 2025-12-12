@@ -1,0 +1,529 @@
+/* ==========================================================
+   WLN CORE – GLOBAL VARIABLES
+   Enthält Farben, Schriftarten und globale Designparameter
+========================================================== */
+
+:root {
+    --color-primary: #ff2df5;
+    --color-secondary: #7a00ff;
+    --color-highlight: #a44cff;
+    --color-bg-dark: #0d0016;
+    --color-bg-mid: #120022;
+    --color-glow: rgba(255,45,245,0.5);
+
+    --radius: 12px;
+
+    --font-stack: 'Inter', 'Poppins', 'Orbitron', sans-serif;
+}
+
+
+
+/* ==========================================================
+   GLOBAL RESET
+   Setzt alle Browser-Defaults zurück für ein einheitliches Layout
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* ==========================================================
+   GLOBAL BODY + BACKGROUND
+   Cyberpunk-Hintergrund + Hologram-Layer
+========================================================== */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-stack);
+    color: #f4d9ff;
+
+    background: radial-gradient(circle at top, #22003d 0%, #0d0016 70%);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Hologram background layer */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('https://i.ibb.co/DDQXWCMK/login-hintergrund.png');
+    opacity: 0.12;
+    z-index: -2;
+}
+
+/* Neon glow layer */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255,45,245,0.06),
+        rgba(122,0,255,0.06)
+    );
+    z-index: -1;
+}
+
+
+
+/* ==========================================================
+   INSTALLER WRAPPER
+   Haupt-Container, hält Sidebar + Content nebeneinander
+========================================================== */
+
+.installer-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 50px);
+    position: relative;
+}
+
+
+
+/* ==========================================================
+   MAIN CONTENT AREA
+   Enthält das Installationspanel – wurde nach unten versetzt
+========================================================== */
+
+.installer-content {
+    flex: 1;
+
+    /* Abstand nach oben und unten (zentriert) */
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    padding-left: 70px;
+    padding-right: 70px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    animation: contentFade 0.45s ease-out;
+}
+
+/* Fade-in animation */
+@keyframes contentFade {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* ==========================================================
+   TYPOGRAPHY
+   Überschriften + Standardtext
+========================================================== */
+
+h1, h2, h3 {
+    color: var(--color-primary);
+    text-shadow: 0 0 10px var(--color-primary);
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+
+/* ==========================================================
+   FORM ELEMENTE
+   Input / Select / Textarea Styling
+========================================================== */
+
+input, select, textarea {
+    width: 100%;
+    background: #1b0030;
+    border: 1px solid rgba(164,76,255,0.35);
+    padding: 12px;
+    color: #f4d9ff;
+    border-radius: var(--radius);
+    margin: 10px 0;
+    outline: none;
+    transition: 0.2s;
+}
+
+/* Fokus */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 12px var(--color-primary);
+}
+
+/* Fehlerzustand */
+input.input-error,
+select.input-error,
+textarea.input-error {
+    border-color: #ff0058 !important;
+    box-shadow: 0 0 12px rgba(255,0,80,0.6) !important;
+}
+
+
+
+/* ==========================================================
+   GLOBAL LINKS
+   Standard-Links im Installer
+========================================================== */
+
+a {
+    color: var(--color-highlight);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: var(--color-primary);
+    text-shadow: 0 0 8px var(--color-primary);
+}
+
+
+
+/* ==========================================================
+   GLOBAL MESSAGE BOXES
+   Error / Success Meldungen
+========================================================== */
+
+.wln-msg {
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    margin: 12px 0;
+    font-weight: 600;
+    border: 1px solid;
+}
+
+.wln-msg.error {
+    background: rgba(255,0,80,0.18);
+    border-color: #ff0058;
+    color: #ff7a9b;
+    box-shadow: 0 0 12px rgba(255,0,80,0.35);
+}
+
+.wln-msg.success {
+    background: rgba(0,255,140,0.18);
+    border-color: #00ff88;
+    color: #a0ffdb;
+    box-shadow: 0 0 12px rgba(0,255,140,0.35);
+}
+
+
+
+/* ==========================================================
+   SCROLLBAR (NEON)
+========================================================== */
+
+::-webkit-scrollbar { width: 10px; }
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ff2df5, #7a00ff);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+::-webkit-scrollbar-track { background: #0d0016; }
+
+
+
+/* ==========================================================
+   PROGRESS BAR (INSTALLER FORTSCHRITT)
+========================================================== */
+
+.wln-progress {
+    width: 100%;
+    height: 6px;
+    background: #230035;
+    box-shadow: inset 0 0 12px rgba(122,0,255,0.35);
+}
+
+.wln-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ff2df5, #7a00ff);
+    box-shadow: 0 0 14px rgba(255,45,245,0.6);
+    transition: width 0.35s ease;
+}
+
+
+
+/* ==========================================================
+   FOOTER – FIXED UND MITTELZENTRIERT
+   Enthält deine 3-Zeilen Ausgabe
+========================================================== */
+
+.wln-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: calc(100% - 260px);
+    margin-left: 260px;
+
+    background: #140024;
+    padding: 16px 25px;
+    font-size: 13px;
+
+    border-top: 1px solid rgba(164,76,255,0.30);
+    box-shadow: 0 -6px 18px rgba(122,0,255,0.25);
+
+    color: #e8d8ff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 99999;
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+   Anpassungen für Mobile / Tablet
+========================================================== */
+
+@media (max-width: 1000px) {
+
+    .installer-wrapper {
+        flex-direction: column;
+    }
+
+    .wln-footer {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .installer-content {
+        padding-top: 120px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .installer-content {
+        padding-top: 140px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 200px;
+    }
+
+    .lang-switch {
+        transform: scale(0.8);
+        right: 10px;
+        top: 10px;
+    }
+}
+
+
+
+/* ==========================================================
+   TERMINAL OUTPUT
+   Wird bei DB-Tests oder Installationslogs genutzt
+========================================================== */
+
+.terminal {
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    background: rgba(10, 0, 25, 0.85);
+    border: 2px solid rgba(140, 0, 255, 0.45);
+    box-shadow: 0 0 22px #8a00ff60;
+    backdrop-filter: blur(6px);
+
+    animation: terminalFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes terminalFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none; }
+
+.terminal-header {
+    background: linear-gradient(90deg, #230034, #320046);
+    padding: 8px 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border-bottom: 1px solid rgba(164, 76, 255, 0.4);
+}
+
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.red { background: #ff2f61; }
+.dot.yellow { background: #ffcc58; }
+.dot.green { background: #39ff91; }
+
+.title {
+    margin-left: auto;
+    color: #cda6ff;
+    opacity: 0.8;
+}
+
+.terminal-output {
+    padding: 20px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    color: #e1ccff;
+    line-height: 1.5;
+}
+
+.line {
+    opacity: 0;
+    animation: fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.terminal.success {
+    border-color: #00ff96;
+    box-shadow: 0 0 22px #00ff9680;
+}
+
+.terminal.error {
+    border-color: #ff0062;
+    box-shadow: 0 0 22px #ff006280;
+}
+
+
+
+/* ==========================================================
+   LANGUAGE SWITCHER
+   Dropdown oben rechts (DE / EN)
+========================================================== */
+
+.lang-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 20000;
+}
+
+.lang-menu {
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background: #1c0030;
+    border: 1px solid rgba(164,76,255,0.45);
+    padding: 8px 0;
+    border-radius: 8px;
+    display: none;
+    z-index: 20001;
+}
+
+.lang-menu.show {
+    display: block;
+}
+
+/* ==========================================================
+   FOOTER – CENTERED 3-LINE VERSION
+========================================================== */
+
+.wln-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: calc(100% - 260px); /* Platz für Sidebar */
+    margin-left: 260px;
+
+    background: #140024;
+    padding: 18px 25px;
+    font-size: 13px;
+
+    border-top: 1px solid rgba(164,76,255,0.30);
+    box-shadow: 0 -6px 18px rgba(122,0,255,0.25);
+
+    color: #e8d8ff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 99999;
+}
+
+/* Links & Rechts – leere Platzhalter */
+.footer-space {
+    width: 25%;
+}
+
+/* Mitte – 3 Zeilen gestapelt */
+.footer-center-block {
+    width: 50%;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.footer-center-block div:nth-child(1) {
+    font-weight: 600;
+    color: #ffbaff;
+}
+
+.footer-center-block div:nth-child(2) {
+    opacity: 0.8;
+}
+
+.footer-center-block div:nth-child(3) {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* ==========================================================
+   FOOTER – TEXT SIZE IMPROVED
+========================================================== */
+
+.wln-footer {
+    font-size: 15px; /* vorher 13px */
+    line-height: 1.4;
+}
+
+.footer-center-block div {
+    font-size: 15px;        /* normales Level */
+    font-weight: 600;       /* leicht fetter */
+    letter-spacing: 0.3px;
+}
+
+.footer-center-block div:first-child {
+    font-size: 17px;        /* Titel größer */
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.btn-primary, .wln-btn-next {
+    background: linear-gradient(90deg, #ff00e1, #a72bff);
+    padding: 12px 28px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.25s;
+    box-shadow: 0 0 15px rgba(255, 0, 221, 0.5);
+}
+
+.btn-primary:hover,
+.wln-btn-next:hover {
+    box-shadow: 0 0 25px rgba(255, 0, 221, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active,
+.wln-btn-next:active {
+    transform: scale(0.96);
+}

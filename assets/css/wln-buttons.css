@@ -1,0 +1,178 @@
+/* ==========================================================
+   WONDERLIFE MEGA SYSTEM – BUTTONS NEON EDITION v3.0
+   CyberCore Engine • NeonUX Framework
+========================================================== */
+
+/* ==========================================================
+   PRIMARY BUTTON (General Use)
+========================================================== */
+.btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+
+    background: linear-gradient(90deg, #ff2df5, #7a00ff);
+    border-radius: var(--radius);
+
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    text-align: center;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 0 18px rgba(255,45,245,0.45),
+        inset 0 0 12px rgba(255,255,255,0.15);
+
+    transition: 0.22s ease;
+    user-select: none;
+
+    margin-top: 18px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 28px rgba(255,45,245,0.9),
+        inset 0 0 14px rgba(255,255,255,0.25);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+    opacity: 0.85;
+}
+
+/* DISABLED */
+.btn-primary:disabled,
+.btn-disabled {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* ==========================================================
+   ICON BUTTON (Add-on für Primary Buttons)
+========================================================== */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 14px 32px;
+
+    background: linear-gradient(90deg, #ff2df5, #7a00ff);
+    border-radius: var(--radius);
+
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 0 18px rgba(255,45,245,0.45),
+        inset 0 0 12px rgba(255,255,255,0.15);
+
+    transition: 0.22s ease;
+
+    margin-top: 18px;
+}
+
+/* Hover */
+.btn-icon:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 28px rgba(255,45,245,0.9),
+        inset 0 0 14px rgba(255,255,255,0.25);
+}
+
+/* Active */
+.btn-icon:active {
+    transform: translateY(1px);
+    opacity: 0.85;
+}
+
+/* Icon */
+.btn-icon .icon {
+    font-size: 19px;
+    filter: drop-shadow(0 0 4px var(--color-primary));
+}
+
+/* ==========================================================
+   SMALL BUTTON (Back Button, Mini Actions)
+========================================================== */
+.btn-small {
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.btn-small .icon {
+    font-size: 16px;
+}
+
+/* ==========================================================
+   COLOR VARIANTS
+========================================================== */
+
+/* Red (Cancel / Danger) */
+.btn-red {
+    background: linear-gradient(90deg, #ff004c, #b80030);
+    border-color: rgba(255,0,80,0.6);
+
+    box-shadow:
+        0 0 16px rgba(255,0,80,0.45),
+        inset 0 0 10px rgba(255,80,120,0.25);
+}
+
+.btn-red:hover {
+    box-shadow:
+        0 0 22px rgba(255,0,80,0.85),
+        inset 0 0 12px rgba(255,80,120,0.35);
+}
+
+/* Green (Success / Test OK) */
+.btn-green {
+    background: linear-gradient(90deg, #00ff85, #00b46b);
+    border-color: rgba(0,255,140,0.5);
+
+    box-shadow:
+        0 0 16px rgba(0,255,140,0.40),
+        inset 0 0 10px rgba(0,255,180,0.20);
+}
+
+.btn-green:hover {
+    box-shadow:
+        0 0 22px rgba(0,255,140,0.85),
+        inset 0 0 12px rgba(0,255,180,0.35);
+}
+
+/* ==========================================================
+   GHOST BUTTON (OPTIONAL — Cancel Button ohne Glow)
+========================================================== */
+.btn-ghost {
+    padding: 12px 22px;
+    border-radius: var(--radius);
+
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+
+    color: #d4baff;
+    cursor: pointer;
+
+    transition: 0.22s ease;
+}
+
+.btn-ghost:hover {
+    background: rgba(255,45,245,0.12);
+    border-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(255,45,245,0.35);
+}
